@@ -2,9 +2,10 @@
     #map-canvas { height: 500px; width: 650px; margin: 0; padding: 0;}
   </style>
 <h1><%= @trip.name %></h1>
+
 <%= javascript_tag do %>
-  var start = <%= @trip.origin %>;
-  var end = <%= @trip.destination %>;
+  var start = <%= @trip.origin.to_json.html_safe %>;
+  var end = <%= @trip.destination.to_json.html_safe %>;
 <% end %>
 
 <script type="text/javascript"
@@ -25,6 +26,7 @@
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
+    calcRoute();
   }
   function calcRoute() {
     var request = {
@@ -41,3 +43,14 @@
 
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+
+<div id="map-canvas"></div>
+
+
+
+
+
+
+
+
