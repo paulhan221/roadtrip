@@ -1,3 +1,18 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#directions-panel {
+  height: 100%;
+  float: right;
+  width: 390px;
+  overflow: auto;
+}
+
+@media print {
+
+  #directions-panel {
+    float: none;
+    width: auto;
+  }
+}
