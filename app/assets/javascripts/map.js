@@ -37,7 +37,6 @@ function addClickHandlers() {
      infowindow.close();
    });
   }
-
   function calcRoute() {
     var request = {
         origin:start,
@@ -52,7 +51,15 @@ function addClickHandlers() {
         addStepPin(latitude,longitude);
       }    
     });
+
+   var polyline = new GPolyline([
+      new GLatLng(start),
+      new GLatLng(end)
+    ], "#ff0000", 10);
+    map.addOverlay(polyline);
+
   }
+
   google.maps.event.addDomListener(window, 'load', initialize);
 });
 
