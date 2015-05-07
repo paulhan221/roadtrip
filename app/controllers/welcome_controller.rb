@@ -4,4 +4,5 @@ class WelcomeController < ApplicationController
     @trip = Trip.new
   end
 
+
 end
