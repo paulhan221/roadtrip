@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require map.js
 //= require click.js
+
 //= require_tree .
