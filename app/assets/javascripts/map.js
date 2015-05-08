@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
   var geocoder;
   var directionsDisplay;
@@ -73,7 +74,7 @@ $(document).ready(function() {
       var lat = position.A;
       var longi = position.F;
       map.panTo(position);
-      map.setZoom(12);
+      map.setZoom(10);
       // places
       var point = new google.maps.LatLng(lat, longi);
       var request = {
@@ -96,14 +97,30 @@ $(document).ready(function() {
     }
 // places marker
     function createMarker(place) {
+      var placeName = place.name;
       var placeLoc = place.geometry.location;
       var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location
       });
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
+        infowindow.setContent(place.name.link(tripId + "/check_points/new"));
         infowindow.open(map, this);
+        
+        $("a").click(function() {
+          // ajax call
+          $.ajax({
+            url: tripId + '/check_points/new',
+            method: 'GET',
+            dataType: 'json',
+            data: {
+              name: placeName,
+           }
+         })
+          // end ajax call
+
+        });
+
       });
     }
 

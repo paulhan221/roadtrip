@@ -4,6 +4,7 @@
 <h1><%= @trip.name %></h1>
 
 <%= javascript_tag do %>
+  var tripId = <%= @trip.id %>
   var start = <%= @trip.origin.to_json.html_safe %>;
   var end = <%= @trip.destination.to_json.html_safe %>;
 <% end %>

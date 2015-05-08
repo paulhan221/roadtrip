@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :trips
+  
+  resources :trips do 
+    resources :check_points
+  end
   resources :users
-  resources :check_points
   
   root to: "welcome#index"
 
