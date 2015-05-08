@@ -97,6 +97,8 @@ $(document).ready(function() {
     }
 // places marker
     function createMarker(place) {
+      var latty = place.geometry.location.A;
+      var longy = place.geometry.location.F;
       var placeAddress = place.vicinity;
       var placeName = place.name;
       var placeLoc = place.geometry.location;
@@ -105,7 +107,7 @@ $(document).ready(function() {
         position: place.geometry.location
       });
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress));
+        infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress + "&latitude=" + latty + "&longitude=" + longy));
         infowindow.open(map, this);
 
       });

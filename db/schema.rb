@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508194359) do
+ActiveRecord::Schema.define(version: 20150508212100) do
 
   create_table "check_points", force: :cascade do |t|
     t.integer  "trip_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150508194359) do
     t.datetime "updated_at", null: false
     t.string   "address"
     t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "trips", force: :cascade do |t|
