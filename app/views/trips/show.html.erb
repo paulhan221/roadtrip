@@ -11,6 +11,7 @@
 <script type="text/javascript"
   src='https://maps.googleapis.com/maps/api/js?key=<%#="#{ENV['GOOGLE_KEY']}"%>'>
 </script> -->
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
 <div id="directions-panel"></div>
@@ -18,5 +19,5 @@
 <div id="map-canvas"></div>
 
 <!-- pass in some address -->
-<%= sanfran = Yelp.client.search("17 West Adams Street, Chicago", { term: 'food', limit: 10, sort: 2 }) %>
 
+<%= sanfran = Yelp.client.search_by_coordinates({latitude: 40.43022363450859, longitude: -89.1650390625}, { term: 'food', limit: 10, sort: 2 }) %>

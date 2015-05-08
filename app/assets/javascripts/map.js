@@ -34,23 +34,6 @@ $(document).ready(function() {
     });
   }
 
-  // add a pin for a step
-  function addStepPin(lat, lng) {
-    var itiLatlng = new google.maps.LatLng(lat, lng);
-    var marker = new google.maps.Marker({
-      map: map,
-      position: itiLatlng
-    });
-    google.maps.event.addListener(marker, 'mouseover', function() {
-      infowindow = new google.maps.InfoWindow({
-      content: "supsup"
-    });
-    infowindow.open(map, marker);
-    });
-    google.maps.event.addListener(marker, 'mouseout', function() {
-     infowindow.close();
-   });
-  }
 
   // calculate directions
   function calcRoute() {
@@ -63,22 +46,21 @@ $(document).ready(function() {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
         // add pin for step
-
         var latitude = response.routes[0].legs[0].steps[5].start_location.A;
         var longitude = response.routes[0].legs[0].steps[5].start_location.F;
-        addStepPin(latitude,longitude);
+        // addStepPin(latitude,longitude);
         }    
     });
-    codeAddress(start);
-    var point = new google.maps.LatLng(41.8781136, -87.62979819999998);
-    var request = {
-        location: point,
-        radius: 500,
-        types: ['restaurant']
-      };
-      infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
+    // codeAddress(start);
+    // var point = new google.maps.LatLng(41.8781136, -87.62979819999998);
+    // var request = {
+    //     location: point,
+    //     radius: 500,
+    //     types: ['restaurant']
+    //   };
+    //   infowindow = new google.maps.InfoWindow();
+    //   var service = new google.maps.places.PlacesService(map);
+    //   service.nearbySearch(request, callback);
     }
 
 // placemarker on click
@@ -87,8 +69,21 @@ $(document).ready(function() {
         position: position,
         map: map
       });
+
+      var lat = position.A;
+      var longi = position.F;
       map.panTo(position);
-      map.setZoom(10);
+      map.setZoom(12);
+      // places
+      var point = new google.maps.LatLng(lat, longi);
+      var request = {
+        location: point,
+        radius: 20000,
+        types: ['restaurant']
+      };
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
     }
 
 // places callback
@@ -113,22 +108,40 @@ $(document).ready(function() {
     }
 
     // geocode an address
-  function codeAddress(address) {
-    // var address = document.getElementById('address').value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-    var latty = results[0].geometry.location.A;
-    var longy = results[0].geometry.location.F;
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
+  // function codeAddress(address) {
+  //   // var address = document.getElementById('address').value;
+  //   geocoder.geocode( { 'address': address}, function(results, status) {
+  //   var latty = results[0].geometry.location.A;
+  //   var longy = results[0].geometry.location.F;
+  //     if (status == google.maps.GeocoderStatus.OK) {
+  //       map.setCenter(results[0].geometry.location);
+  //       var marker = new google.maps.Marker({
+  //           map: map,
+  //           position: results[0].geometry.location
+  //       });
+  //     } else {
+  //       alert('Geocode was not successful for the following reason: ' + status);
+  //     }
+  //   });
+  // }
+
+  // add a pin for a step
+  // function addStepPin(lat, lng) {
+  //   var itiLatlng = new google.maps.LatLng(lat, lng);
+  //   var marker = new google.maps.Marker({
+  //     map: map,
+  //     position: itiLatlng
+  //   });
+  //   google.maps.event.addListener(marker, 'mouseover', function() {
+  //     infowindow = new google.maps.InfoWindow({
+  //     content: "supsup"
+  //   });
+  //   infowindow.open(map, marker);
+  //   });
+  //   google.maps.event.addListener(marker, 'mouseout', function() {
+  //    infowindow.close();
+  //  });
+  // }
 
   google.maps.event.addDomListener(window, 'load', initialize);
 });
