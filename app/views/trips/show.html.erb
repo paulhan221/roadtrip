@@ -7,13 +7,16 @@
   var start = <%= @trip.origin.to_json.html_safe %>;
   var end = <%= @trip.destination.to_json.html_safe %>;
 <% end %>
-
+<!-- 
 <script type="text/javascript"
-  src='https://maps.googleapis.com/maps/api/js?key=<%="#{ENV['GOOGLE_KEY']}"%>'>
-</script>
+  src='https://maps.googleapis.com/maps/api/js?key=<%#="#{ENV['GOOGLE_KEY']}"%>'>
+</script> -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
 <div id="directions-panel"></div>
 
 <div id="map-canvas"></div>
 
+<!-- pass in some address -->
+<%= sanfran = Yelp.client.search("17 West Adams Street, Chicago", { term: 'food', limit: 10, sort: 2 }) %>
 
