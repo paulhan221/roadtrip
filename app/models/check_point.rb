@@ -1,5 +1,4 @@
 class CheckPoint < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :roadtrip
+  belongs_to :trip
   has_many :reviews
 end

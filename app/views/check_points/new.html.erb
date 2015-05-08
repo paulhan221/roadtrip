@@ -1,1 +1,25 @@
-HERROOO
+<%= form_for(@checkpoint) do |f| %>
+ <% if @checkpoint.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@checkpoint.errors.count, "error") %> prohibited this checkpoint from being saved:</h2>
+
+     <ul>
+     <% @checkpoint.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <div class="field">
+  <%= f.hidden_field :name, :value => @checkpoint.name %>
+  <%= f.hidden_field :address, :value => @checkpoint.address %>
+ </div>
+ <%= f.hidden_field :trip_id, :value => @checkpoint.trip_id %>
+ <div class="actions">
+   <%= f.submit "Add to Trip?" %>
+ </div>
+<% end %>
+
+
+

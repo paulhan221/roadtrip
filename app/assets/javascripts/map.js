@@ -97,6 +97,7 @@ $(document).ready(function() {
     }
 // places marker
     function createMarker(place) {
+      var placeAddress = place.vicinity;
       var placeName = place.name;
       var placeLoc = place.geometry.location;
       var marker = new google.maps.Marker({
@@ -104,25 +105,55 @@ $(document).ready(function() {
         position: place.geometry.location
       });
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name.link(tripId + "/check_points/new"));
+        infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress));
         infowindow.open(map, this);
-        
-        $("a").click(function() {
-          // ajax call
-          $.ajax({
-            url: tripId + '/check_points/new',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-              name: placeName,
-           }
-         })
-          // end ajax call
-
-        });
 
       });
     }
+
+
+        // $("a").click(function() {
+        //   // ajax call
+        //   $.ajax({
+        //     url: tripId + '/check_points/new',
+        //     method: 'GET',
+        //     dataType: 'json',
+        //     data: {
+        //       name: placeName,
+        //       address: placeAddress
+        //     }, 
+        //     success: function(data) {
+        //       var name = data.name;
+        //       var address = data.address;
+        //       var html = '<div class=\"modal fade\">';
+        //       debugger;
+              //   <div class=\"modal-dialog\">
+              //     <div class=\"modal-content\">
+              //       <div class=\"modal-header\">
+              //         <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+              //         <h4 class=\"modal-title\">' + name + 
+              //         '</h4>
+              //       </div>
+              //       <div class=\"modal-body\">
+              //         <p>' + address + '</p>
+              //       </div>
+              //       <div class=\"modal-footer\">
+              //         <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>
+              //         <button type=\"button\" class=\"btn btn-primary\">Save changes</button>
+              //       </div>
+              //     </div>
+              //   </div>
+              // </div>';
+              // $("body").append(html);
+              // debugger;
+           // }
+         // })
+          // end ajax call
+
+        // });
+
+    //   });
+    // }
 
     // geocode an address
   // function codeAddress(address) {
@@ -161,6 +192,7 @@ $(document).ready(function() {
   // }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
 });
 
 
