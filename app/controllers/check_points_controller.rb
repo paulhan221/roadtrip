@@ -1,30 +1,34 @@
 class CheckPointsController < ApplicationController
 
   def new
-    @checkpoint = CheckPoint.new(check_point_params)
-    
-    # binding.pry
-    # @cp_name = params["name"]
-    # @cp_address = params["address"]
-    # respond_to do |format|
-    #   format.json { render :json => {
-    #       :status => 401, 
-    #       :success => :true,
-    #       :name => @cp_name, 
-    #       :address => @cp_address
-    #     }
-    #   }
-    # end
+    @checkpoint = CheckPoint.new(checkpoint_params_for_new)
+  end
+
+  def show
+    @checkpoint = CheckPoint.find(params[:id])
   end
 
   def create
-
+    @checkpoint = CheckPoint.new(checkpoint_params)
+    respond_to do |format|
+      if @checkpoint.save
+        format.html { redirect_to @checkpoint, notice: 'checkpoint was successfully created.' }
+        format.json { render :show, status: :created, location: @checkpoint }
+      else
+        format.html { render :new }
+        format.json { render json: @checkpoint.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
 
-  def check_point_params
+  def checkpoint_params_for_new
     params.permit(:name, :address, :trip_id)
+  end
+
+  def checkpoint_params
+    params.require(:check_point).permit(:name, :address, :trip_id)
   end
 
 end
