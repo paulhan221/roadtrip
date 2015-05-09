@@ -2,12 +2,10 @@ class CheckPointsController < ApplicationController
 
   def new
     @checkpoint = CheckPoint.new(checkpoint_params_for_new)
-    @yelpdata = Yelp.client.search_by_coordinates({latitude: "#{@checkpoint.latitude}", longitude: "#{@checkpoint.longitude}"}, { term: 'restaurants', limit: 10, sort: 1 })
-
-    @businesses = []
+    @yelpdata = Yelp.client.search_by_coordinates({latitude: "#{@checkpoint.latitude}", longitude: "#{@checkpoint.longitude}"}, { limit: 15, sort: 1, radius_filter: 40000 })
     @yelp_url = ""
     @yelpdata.raw_data["businesses"].each do |business|
-      if business["name"] == @checkpoint.name
+      if (@checkpoint.name.include?(business["name"][0..5]) || business["name"].include?(@checkpoint.name[0..5]))
         @yelp_url = business['url']
       end
     end

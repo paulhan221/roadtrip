@@ -109,11 +109,8 @@ $(document).ready(function() {
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress + "&latitude=" + latty + "&longitude=" + longy));
         infowindow.open(map, this);
-
       });
     }
-
-
         // $("a").click(function() {
         //   // ajax call
         //   $.ajax({

@@ -1,4 +1,17 @@
 <h2><%= @checkpoint.name %></h2>
 <h3><%= @checkpoint.address %></h3>
-<h4><%= link_to "Check this out on YELP!", @yelp_url %></h4>
+
+<% if @yelp_url == "" %>
+  <h4>A yelp review is not available for this restaurant</h4>
+<% else %>
+  <h4><%= link_to "Check this out on YELP!", @yelp_url %></h4>
+<% end %>
 <%= render 'form' %>
+
+
+<%= @businesses %>
+<br><br>
+<%= @checkpoint.latitude %><br>
+<%= @checkpoint.longitude %>
+
+
