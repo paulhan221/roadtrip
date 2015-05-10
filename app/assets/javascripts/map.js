@@ -6,6 +6,7 @@ $(document).ready(function() {
   var map;
   var latty;
   var longy;
+  var markers = [];
 
   // initialize the map
   function initialize() {
@@ -110,6 +111,7 @@ $(document).ready(function() {
         map: map,
         position: place.geometry.location
       });
+      markers.push(marker);
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress + "&latitude=" + latty + "&longitude=" + longy));
         infowindow.open(map, this);
@@ -193,6 +195,25 @@ $(document).ready(function() {
   //    infowindow.close();
   //  });
   // }
+
+  // clear markers
+  function setAllMap(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+  function clearMarkers() {
+    setAllMap(null);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
+  
+  $("#panel").click(function(){
+    clearMarkers();
+  });
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
