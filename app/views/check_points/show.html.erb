@@ -1,2 +1,30 @@
-<h1><%= @checkpoint.name %></h1>
-<h3><%= @checkpoint.address %></h3>
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <br><br>
+    <iframe
+      width= "70%"
+      height="450"
+      frameborder="0" style="border:0"
+      src='https://www.google.com/maps/embed/v1/place?key=<%="#{ENV["GOOGLE_KEY"]}"%>&q=<%=@checkpoint.name+@checkpoint.address%>'>
+    </iframe>
+  </div>
+  <div class="col-md-6">
+    <h2><%= @checkpoint.name %></h2>
+    <h3><%= @checkpoint.address %></h3>
+    <% if @yelp_url != "" %>
+      <%= image_tag @image %><br>
+      Phone number: <%= @number %><br>
+      No. of Reviews: <%= @review_count %><br>
+      Average Rating: <%= @rating %><br>
+      <%= image_tag @stars %>
+    <% end %>
+
+    <% if @yelp_url == "" %>
+      <h4>A yelp review is not available for this restaurant</h4>
+    <% else %>
+      <h4><%= link_to "Visit their Yelp page!", @yelp_url %></h4>
+    <% end %>
+    <h3>This restaurant has been added to your trip!</h3>
+  </div>
+</div>
