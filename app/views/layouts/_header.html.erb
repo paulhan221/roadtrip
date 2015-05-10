@@ -12,10 +12,14 @@
      </div>
      <div class="collapse navbar-collapse">
        <ul class="nav navbar-nav">
-        <li id="back"><%= link_to 'Back', :back %></li>
-        <li><%= login_logout_links %></li>
+            <li><%= link_to current_user.name, users_current_path %></li>
        </ul>
+       <ul class="nav navbar-nav navbar-right">
+            <li id="back"><%= link_to 'Back', :back %></li>
+            <li><%= login_logout_links %></li>
+          </ul>
      </div><!-- navbar -->
+
     </div>
   </div>
 </header>

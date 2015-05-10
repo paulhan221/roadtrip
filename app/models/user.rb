@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reviews
-  has_many :roadtrips
-  has_many :check_points, through: :roadtrips  
+  has_many :trips
+  has_many :check_points, through: :trips  
   
   def self.create_with_omniauth(auth)
     create! do |user|

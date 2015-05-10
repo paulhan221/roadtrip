@@ -18,17 +18,18 @@
   
 
   <div id="map-canvas"></div>
-
+  <div id="panel">
     <input type=button value="Delete Pins">
-
+  </div>
 </div>
-<div class="checkpoints">
-
-  <h4 style= "color: black;">All checkpoints for this trip </h4>
-    <ol type= "A">
-      <li style= "visibility: hidden;"></li>
-    <% @trip.check_points.each do |checkpoint| %>
-      <li><%= link_to checkpoint.name, check_point_path(checkpoint) %> <%= button_to "Remove from trip", check_point_path(checkpoint), :method => :delete, class: "btn btn-default" %> </li>
-    <% end %>
-    </ol>
-</div>
+<% if @trip.check_points.count > 0 %>
+  <div class="checkpoints">
+    <h4 style= "color: black;">All checkpoints for this trip </h4>
+      <ol type= "A">
+        <li style= "visibility: hidden;"></li>
+      <% @trip.check_points.each do |checkpoint| %>
+        <li><%= link_to "#{checkpoint.name}- #{checkpoint.address}", check_point_path(checkpoint) %> <%= button_to "Remove from trip", check_point_path(checkpoint), :method => :delete, class: "btn btn-default" %> </li>
+      <% end %>
+      </ol>
+  </div>
+<% end %>

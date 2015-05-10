@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get "/trips/:trip_id/check_points/new" => "check_points#new"
 
+  get '/users/current', to: 'users#current'
+  
   get '/login', to: 'sessions#new'
 
   get '/logout', to: 'sessions#destroy'

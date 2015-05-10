@@ -1,0 +1,25 @@
+<h1> My Profile Page</h1>
+  <% @user.trips.each do |trip| %>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h2 class="panel-title" id="panel-title"><%=link_to trip.name, trip_path(trip)%></h3>
+  </div>
+  <div class="panel-body">
+    <h4 style="color: black;">Origin: <%= trip.origin %></h4>
+    <% if trip.check_points.count > 0 %>
+      <h4 style="color: black;">Checkpoints: </h4>
+      <ul>
+      <% trip.check_points.each do |checkpoint| %>
+        <li><%= link_to checkpoint.name, check_point_path(checkpoint) %>
+        <%= checkpoint.address %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    <h4 style="color: black;">Destination:<%= trip.destination %></h4>
+    <h4 style="color: black;">Started trip on: <%= trip.created_at.strftime("%B %d, %Y") %></h4>
+  </div>
+
+</div>
+  <% end %>
+
