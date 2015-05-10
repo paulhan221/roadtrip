@@ -9,7 +9,7 @@ class CheckPointsController < ApplicationController
         @yelp_url = business['url']
         @image = business["image_url"]
         @rating = business["rating"]
-        @number = business["phone"]
+        @number = business["display_phone"].gsub("+","")
         @review_count = business["review_count"]
         @stars = business["rating_img_url_large"]
       end
@@ -44,6 +44,15 @@ class CheckPointsController < ApplicationController
         format.html { render :new }
         format.json { render json: @checkpoint.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @checkpoint = CheckPoint.find(params[:id])
+    @checkpoint.destroy
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'checkpoint item was successfully removed.' }
+      format.json { head :no_content }
     end
   end
 

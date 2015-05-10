@@ -1,7 +1,6 @@
 <br>
 <div class="row">
   <div class="col-md-6">
-    <br><br>
     <iframe
       width= "70%"
       height="450"
@@ -10,21 +9,22 @@
     </iframe>
   </div>
   <div class="col-md-6">
-    <h2><%= @checkpoint.name %></h2>
+    <h2><%= @checkpoint.name %></h2><br>
     <h3><%= @checkpoint.address %></h3>
     <% if @yelp_url != "" %>
       <%= image_tag @image %><br>
-      Phone number: <%= @number %><br>
-      No. of Reviews: <%= @review_count %><br>
-      Average Rating: <%= @rating %><br>
+      <h4>Phone number: <%= @number %></h4>
+      <h4>No. of Reviews: <%= @review_count %></h4>
+      <h4>Average Rating: <%= @rating %></h4>
       <%= image_tag @stars %>
     <% end %>
 
     <% if @yelp_url == "" %>
       <h4>A yelp review is not available for this restaurant</h4>
     <% else %>
-      <h4><%= link_to "Visit their Yelp page!", @yelp_url %></h4>
+      <h4><%= link_to "Visit their Yelp page!", @yelp_url, class: "yelp-link" %></h4>
     <% end %>
+    <br>
     <%= render 'form' %>
   </div>
 </div>

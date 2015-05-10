@@ -14,7 +14,7 @@ $(document).ready(function() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
     var mapOptions = {
-      zoom:7,
+      zoom:9,
       center: chicago,
       // places
       styles: [

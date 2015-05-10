@@ -11,17 +11,17 @@
    </div>
  <% end %>
 
- <div class="field">
+ <div class="form-group">
    <%= f.label :name, "Name Of Trip" %><br>
-   <%= f.text_field :name %>
+   <%= f.text_field :name, class: "form-control" %>
  </div>
- <div class="field">
+ <div class="form-group">
    <%= f.label :origin %><br>
-   <%= f.text_field :origin, id: "start" %>
+   <%= f.text_field :origin, id: "start",class: "form-control" %>
  </div>
- <div class="field">
+ <div class="form-group">
    <%= f.label :destination %><br>
-   <%= f.text_field :destination, id: "end" %>
+   <%= f.text_field :destination, id: "end",class: "form-control" %>
  </div>
  <br>
  <br>
