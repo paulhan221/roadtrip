@@ -1,5 +1,5 @@
 <style type="text/css">
-    #map-canvas { height: 500px; width: 650px; margin: 0; padding: 0;}
+    
   </style>
 <h1><%= @trip.name %></h1>
 
@@ -16,12 +16,13 @@
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
-<div id="directions-panel"></div>
+<div class="row">
+  <div id="directions-panel"></div>
+  
   <div id="panel">
     <input type=button value="Hide Markers">
   </div>
-<div id="map-canvas"></div>
 
-<!-- pass in some address -->
+  <div id="map-canvas"></div>
+</div>
 
-<%= sanfran = Yelp.client.search_by_coordinates({latitude: 40.43022363450859, longitude: -89.1650390625}, { term: 'food', limit: 10, sort: 2 }) %>

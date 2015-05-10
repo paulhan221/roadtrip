@@ -85,7 +85,7 @@ $(document).ready(function() {
       var request = {
         location: point,
         radius: 20000,
-        types: ['food', 'restaurant']
+        types: ['restaurant']
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);

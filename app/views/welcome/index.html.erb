@@ -1,20 +1,9 @@
-<h1>Welcome to our app</h1>
+ <body class="container welcome"> 
+  <h1>Welcome to our app</h1>
 
-<% if logged_in? %>
-	<%= render 'form'  %>
-<% else %>
-	<h3>please log in to continue</h3>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <% if logged_in? %>
+  	<%= render 'form'  %>
+  <% else %>
+  	<h3>please log in to continue</h3>
+  <% end %>
+</body>
