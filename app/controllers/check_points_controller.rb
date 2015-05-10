@@ -2,19 +2,21 @@ class CheckPointsController < ApplicationController
 
   def new
     @checkpoint = CheckPoint.new(checkpoint_params_for_new)
-    @yelpdata = Yelp.client.search_by_coordinates({latitude: "#{@checkpoint.latitude}", longitude: "#{@checkpoint.longitude}"}, { limit: 15, sort: 1, radius_filter: 40000 })
+    @yelpdata = Yelp.client.search_by_coordinates({latitude: "#{@checkpoint.latitude}", longitude: "#{@checkpoint.longitude}"}, { term: "food, restaurants",limit: 20, sort: 1, radius_filter: 40000 })
     @yelp_url = ""
+    @businesses = [];
     @yelpdata.raw_data["businesses"].each do |business|
+      @businesses << business["name"]
       if (@checkpoint.name.include?(business["name"][0..5]) || business["name"].include?(@checkpoint.name[0..5]))
         @yelp_url = business['url']
       end
     end
+    @businesses
     @yelp_url
   end
 
   def show
     @checkpoint = CheckPoint.find(params[:id])
-    # @yelpdata = Yelp.client.business("name: Chipotle")
   end
 
   def create

@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   var geocoder;
   var directionsDisplay;
@@ -35,12 +34,17 @@ $(document).ready(function() {
     });
   }
 
-
   // calculate directions
   function calcRoute() {
+    var waypts = [];
+    waypoints.forEach(function(waypoint){
+      waypts.push({location: waypoint.address})
+    });
     var request = {
         origin: start,
         destination:end,
+        waypoints: waypts,
+        optimizeWaypoints: true,
         travelMode: google.maps.TravelMode.DRIVING
     };
     directionsService.route(request, function(response, status) {

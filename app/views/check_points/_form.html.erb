@@ -14,6 +14,8 @@
  <div class="field">
   <%= f.hidden_field :name, :value => @checkpoint.name %>
   <%= f.hidden_field :address, :value => @checkpoint.address %>
+  <%= f.hidden_field :latitude, :value => @checkpoint.latitude %>
+  <%= f.hidden_field :longitude, :value => @checkpoint.longitude %>
  </div>
  <%= f.hidden_field :trip_id, :value => @checkpoint.trip_id %>
  <div class="actions">

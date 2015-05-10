@@ -7,6 +7,7 @@
   var tripId = <%= @trip.id %>
   var start = <%= @trip.origin.to_json.html_safe %>;
   var end = <%= @trip.destination.to_json.html_safe %>;
+  var waypoints = <%= @trip.check_points.to_json.html_safe %>
 <% end %>
 <!-- 
 <script type="text/javascript"
