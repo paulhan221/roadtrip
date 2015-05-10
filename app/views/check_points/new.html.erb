@@ -1,5 +1,13 @@
+<br>
 <h2><%= @checkpoint.name %></h2>
 <h3><%= @checkpoint.address %></h3>
+<% if @yelp_url != "" %>
+  <%= image_tag @image %><br>
+  Phone number: <%= @number %><br>
+  No. of Reviews: <%= @review_count %><br>
+  Average Rating: <%= @rating %><br>
+  <%= image_tag @stars %>
+<% end %>
 
 <% if @yelp_url == "" %>
   <h4>A yelp review is not available for this restaurant</h4>
@@ -8,10 +16,7 @@
 <% end %>
 <%= render 'form' %>
 
-
 <%= @businesses %>
 <br><br>
 <%= @checkpoint.latitude %><br>
 <%= @checkpoint.longitude %>
-
-

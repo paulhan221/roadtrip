@@ -75,7 +75,7 @@ $(document).ready(function() {
         position: position,
         map: map
       });
-
+      markers.push(marker);
       var lat = position.A;
       var longi = position.F;
       map.panTo(position);
@@ -85,7 +85,7 @@ $(document).ready(function() {
       var request = {
         location: point,
         radius: 20000,
-        types: ['restaurant']
+        types: ['food', 'restaurant']
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
@@ -210,7 +210,7 @@ $(document).ready(function() {
     clearMarkers();
     markers = [];
   }
-  
+
   $("#panel").click(function(){
     clearMarkers();
   });
