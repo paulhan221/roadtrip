@@ -1,4 +1,4 @@
-<%= form_for(@trip) do |f| %>
+<%= form_for @trip, html: { class: "form-inline" } do |f| %>
  <% if @trip.errors.any? %>
    <div id="error_explanation">
      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
@@ -23,9 +23,11 @@
    <%= f.label :destination %><br>
    <%= f.text_field :destination, id: "end" %>
  </div>
- <%= f.hidden_field :user_id, :value => current_user.id %>
+ <br>
+ <br>
  <div class="actions">
-   <%= f.submit class: "calculate" %>
+ <%= f.hidden_field :user_id, :value => current_user.id %>
+   <%= f.submit "Let's Go!", class: "btn btn-default"%>
  </div>
 <% end %>
 

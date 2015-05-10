@@ -38,7 +38,7 @@ class CheckPointsController < ApplicationController
     @checkpoint = CheckPoint.new(checkpoint_params)
     respond_to do |format|
       if @checkpoint.save
-        format.html { redirect_to @checkpoint, notice: 'checkpoint was successfully created.' }
+        format.html { redirect_to @checkpoint.trip, notice: 'checkpoint was successfully created.' }
         format.json { render :show, status: :created, location: @checkpoint }
       else
         format.html { render :new }

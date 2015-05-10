@@ -1,9 +1,7 @@
- <body class="container welcome"> 
-  <h1>Welcome to our app</h1>
+<center><h1 id="roadtrip">Welcome to RoadTrip</h1></center><br><br><br>
 
   <% if logged_in? %>
-  	<%= render 'form'  %>
+  	<center><%= render 'form'  %></center>
   <% else %>
   	<h3>please log in to continue</h3>
   <% end %>
-</body>

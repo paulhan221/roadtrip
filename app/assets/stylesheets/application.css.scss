@@ -21,11 +21,13 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 body {
-  padding-top: 70px;
+  background: url('roadtrip.jpg') no-repeat center center fixed;
+}
+
+.wrapper {
   padding-bottom: 30px;
   padding-right: 30px;
   padding-left: 30px;
-  background: url('roadtrip.jpg') no-repeat center center fixed;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -36,6 +38,45 @@ body {
 
 .theme-showcase > p > .btn {
   margin: 5px 0;
+}
+
+.navbar-default {
+  background-color: #c37744;
+  border-color: #c37744;
+  border-radius: 0px;
+}
+h1, h2, h3, h4 {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  line-height: 120%;
+  margin: 0px 0 0px 0;
+  color: white;
+}
+#roadtrip {
+  font-size: 50px;
+  font-family: fantasy;
+}
+
+label {
+  color: white;
+  font-size: 35px;
+  font-family: fantasy;
+}
+.form-inline div { 
+  display: inline-block;
+  text-align: center;
+}
+.navbar-default .navbar-brand {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+input, button, select, textarea {
+  padding-left: 109px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 
