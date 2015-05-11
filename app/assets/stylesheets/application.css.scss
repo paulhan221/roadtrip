@@ -41,8 +41,8 @@ body {
 }
 
 .navbar-default {
-  background-color: #c37744;
-  border-color: #c37744;
+  background-color: #028090;
+  opacity: 0.5;
   border-radius: 0px;
 }
 h1, h2, h3, h4, p {
@@ -55,13 +55,13 @@ h1, h2, h3, h4, p {
 
 #roadtrip {
   font-size: 50px;
-  font-family: fantasy;
+  font-family: inherit;
 }
 
 label {
   color: white;
   font-size: 35px;
-  font-family: fantasy;
+  font-family: inherit;
 }
 .form-inline div { 
   display: inline-block;
