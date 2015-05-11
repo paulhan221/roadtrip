@@ -7,6 +7,7 @@ $(document).ready(function() {
   var latty;
   var longy;
   var markers = [];
+  var fastFood = ["subway", "mcdonald's", "burger king", "wendy's", "arby", "domino", "kfc", "dairy queen", "taco bell", "white castle", "sonic drive-in", "dunkin' donuts", "whataburger" ].join();
 
   // initialize the map
   function initialize() {
@@ -84,8 +85,8 @@ $(document).ready(function() {
       var point = new google.maps.LatLng(lat, longi);
       var request = {
         location: point,
-        radius: 20000,
-        types: ['restaurant']
+        radius: 50000,
+        types: ['amusement park', 'aquarium', 'bakery', 'bowling', 'cafe', 'art gallery', 'museum', 'casino', 'movie theater', 'spa', 'zoo','restaurant']
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
@@ -107,10 +108,14 @@ $(document).ready(function() {
       var placeAddress = place.vicinity;
       var placeName = place.name;
       var placeLoc = place.geometry.location;
-      var marker = new google.maps.Marker({
-        map: map,
-        position: place.geometry.location
-      });
+      var fastFoodString = new RegExp("(" + placeName.toLowerCase() + ")")
+      if ((fastFoodString).test(fastFood) != true) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+      }
       markers.push(marker);
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name.link(tripId + "/check_points/new?name=" + placeName + "&address=" + placeAddress + "&latitude=" + latty + "&longitude=" + longy));
