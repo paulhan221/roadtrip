@@ -41,16 +41,16 @@ body {
 }
 
 .navbar-default {
-  background-color: #028090;
-  opacity: 0.5;
-  border-radius: 0px;
+  background-color: #FF4E00;
+  opacity: 0.4;
+  border: 5px solid transparent;
 }
 h1, h2, h3, h4, p {
   font-family: "Helvetica", sans-serif;
   font-weight: 300;
   line-height: 120%;
   margin: 0px 0 0px 0;
-  color: white;
+  color: #5D737E;
 }
 
 #roadtrip {
@@ -59,7 +59,7 @@ h1, h2, h3, h4, p {
 }
 
 label {
-  color: white;
+  color: #5D737E;
   font-size: 35px;
   font-family: inherit;
 }
@@ -68,10 +68,10 @@ label {
   text-align: center;
 }
 .navbar-default .navbar-brand {
-  color: white;
+  color: #E4FDE1;
 }
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: #E4FDE1;
 }
 
 input, button, select, textarea {
