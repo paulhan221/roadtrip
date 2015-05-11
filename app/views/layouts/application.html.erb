@@ -2,13 +2,15 @@
 <html>
 <head>
   <title>Along The Way</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+   <%= stylesheet_link_tag 'application', ''%>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <script type="text/javascript"> var idx=window.location.toString().indexOf("#_=_"); if (idx>0) { window.location = window.location.toString().substring(0, idx); } </script>
 </head>
   <body>
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <%= render '/layouts/header' %>
     <div class="wrapper">
       <%= yield %>
