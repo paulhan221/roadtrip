@@ -24,7 +24,7 @@
 </div>
 <% if @trip.check_points.count > 0 %>
   <div class="checkpoints">
-    <h4 style= "color: black;">All checkpoints for this trip </h4>
+    <h4 style= "color: black;">Places I've been for this trip</h4>
       <ol type= "A">
         <li style= "visibility: hidden;"></li>
       <% @trip.check_points.each do |checkpoint| %>

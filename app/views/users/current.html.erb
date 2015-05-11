@@ -1,4 +1,4 @@
-<h1> My Profile Page</h1>
+<h1>Where I've been</h1>
   <% @user.trips.each do |trip| %>
 
 <div class="panel panel-warning">
@@ -8,7 +8,7 @@
   <div class="panel-body">
     <h4 style="color: black;">Origin: <%= trip.origin %></h4>
     <% if trip.check_points.count > 0 %>
-      <h4 style="color: black;">Checkpoints: </h4>
+      <h4 style="color: black;">Along the way:</h4>
       <ul>
       <% trip.check_points.each do |checkpoint| %>
         <li><%= link_to checkpoint.name, check_point_path(checkpoint) %>
