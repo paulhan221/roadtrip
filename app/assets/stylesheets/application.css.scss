@@ -23,6 +23,7 @@
 body {
   background: url('roadtrip.jpg') no-repeat center center fixed;
 }
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
 
 .wrapper {
   padding-bottom: 30px;
@@ -41,37 +42,37 @@ body {
 }
 
 .navbar-default {
-  background-color: #028090;
+  background-color: #69A297;
   opacity: 0.5;
-  border-radius: 0px;
+  border: 5px solid transparent;
 }
 h1, h2, h3, h4, p {
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Poiret One', cursive;
   font-weight: 300;
   line-height: 120%;
   margin: 0px 0 0px 0;
-  color: white;
+  color: #3C6E71;
 }
 
 #roadtrip {
   font-size: 50px;
-  font-family: inherit;
+  font-family: 'Poiret One', cursive;
 }
 
 label {
-  color: white;
+  color: #E16036;
   font-size: 35px;
-  font-family: inherit;
+  font-family: 'Poiret One', cursive;
 }
 .form-inline div { 
   display: inline-block;
   text-align: center;
 }
 .navbar-default .navbar-brand {
-  color: white;
+  color: #E4FDE1;
 }
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: #E4FDE1;
 }
 
 input, button, select, textarea {
@@ -91,4 +92,9 @@ input, button, select, textarea {
 }
 ul {
  list-style: none;
+}
+.btn-default {
+  background-color: #E16036;
+  border-color: #E16036;
+  color: white;
 }
