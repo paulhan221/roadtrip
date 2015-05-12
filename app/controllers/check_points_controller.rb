@@ -7,7 +7,6 @@ class CheckPointsController < ApplicationController
     if @checkpoint.latitude || @checkpoint.longitude
       @yelpdata = Yelp.client.search_by_coordinates({latitude: "#{@checkpoint.latitude}", longitude: "#{@checkpoint.longitude}"}, {limit: 20, sort: 1, radius_filter: 40000 })
       @yelpdata.raw_data["businesses"].each do |business|
-        @businesses << business["name"]
         if (@checkpoint.name.include?(business["name"][0..5]) || business["name"].include?(@checkpoint.name[0..5]))
           @yelp_url = business['url']
           @image = business["image_url"]
@@ -18,7 +17,6 @@ class CheckPointsController < ApplicationController
         end
       end
     end
-    @businesss
     @yelp_url
   end
 
